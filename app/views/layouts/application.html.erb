@@ -6,11 +6,66 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/62ac904f9a.js" crossorigin="anonymous"></script>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <header class="border-bottom border-dark p-3">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+          <a class="navbar-brand" href="/">
+            <span>ながのCAKE</span>
+          </a>
+            <ul class="navbar-nav ">
+              <% if customer_signed_in? %>
+                <li class="nav-item">
+                  <%= link_to public_customers_mypage_path, class: "nav-link text-bluck" do %>
+                    <span>マイページ</span>
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to public_items_path, class: "nav-link" do %>
+                    <span>商品一覧</span>
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to public_cart_items_path, class: "nav-link" do %>
+                    <span>カート</span>
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to destroy_customer_session_path, method: :delete, class: "nav-link" do %>
+                    <span>ログアウト</span>
+                  <% end %>
+                </li>
+              <% else %>
+                <li class="nav-item">
+                  <%= link_to public_about_path, class: "nav-link text-dark" do %>
+                    <span>About</span>
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to root_path, class: "nav-link text-dark" do %>
+                    <span>商品一覧</span>
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to new_customer_registration_path, class: "nav-link text-dark" do %>
+                    <span>新規登録</span>
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to new_customer_session_path, class: "nav-link text-dark" do %>
+                    <span>ログイン</span>
+                  <% end %>
+                </li>
+              <% end %>
+            </ul>
+        </div>
+      </nav>
+    </header>
     <%= yield %>
   </body>
 </html>
