@@ -1,10 +1,16 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+    get "admin", to: 'homes#top', as: :/
+  end
   namespace :public do
-    get "homes/about" => "homes#about", as: '/about'
+    root to: "homes#top"
+    get "homes/about" => "homes#about", as: :about
     get 'customers/mypage' => 'customers#show'
-    resources :customers, only: [:show, :edit, :update]
-    get 'customers/unsubscribe'
+    get 'customers/edit' => 'customers#edit'
+    patch 'customers' => 'customers#update'
+    get 'customers/unsubscribe' => 'customers#unsubscribe'
+    patch 'customers/withdraw' => 'customers#withdraw'
     resources :items, only: [:index, :show]
     resources :cart_items, only: [:index]
   end
@@ -17,6 +23,6 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
-      root to: "homes#top"
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
