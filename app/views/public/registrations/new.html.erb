@@ -4,7 +4,7 @@
 <%= form_with model: @customer, url: new_customer_registration_path do |f| %>
   <%= render "public/shared/error_messages", resource: resource %>
 
-  <div class="flex">
+  <div class="d-flex">
     <label>名前</label>
     <div class="field">
       <%= f.label :"(姓)" %>
@@ -17,7 +17,7 @@
     </div>
   </div>
 
-  <div class="flex">
+  <div class="d-flex">
     <label>フリガナ</label>
     <div class="field">
       <%= f.label :"(セイ)" %>
