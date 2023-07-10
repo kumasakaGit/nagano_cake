@@ -1,5 +1,5 @@
 <h3>会員情報編集</h3>
-<%= form_with model: @customer, url: public_customers_path do |f| %>
+<%= form_with model: @customer, url: public_customers_path, local: true do |f| %>
 
   <div class="d-flex">
     <label>名前</label>

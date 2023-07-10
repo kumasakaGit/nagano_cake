@@ -1,0 +1,11 @@
+ja:
+    enums:
+      order:
+        payment_method:
+          credit_card: "クレジットカード"
+          transfer: "銀行振込"
+
+      customer:
+        is_deleted:
+          active: "有効"
+          unsubscribe: "退会"
