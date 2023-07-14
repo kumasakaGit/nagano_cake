@@ -2,7 +2,7 @@
 <%= form_with model: @item, url: admin_items_path, local: true do |f|%>
 <div>
   <%= f.label :"商品画像" %>
-  <%= f.file_field :iamge %>
+  <%= f.file_field :image, accept: "image/*" %>
 </div>
 <div>
   <%= f.label :"商品名" %>

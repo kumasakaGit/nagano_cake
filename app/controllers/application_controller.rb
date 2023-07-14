@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
     when :admin
       new_admin_session_path
     when :customer
-      public_root_path
+      root_path
     end
   end
 

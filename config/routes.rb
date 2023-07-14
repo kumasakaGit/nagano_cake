@@ -1,12 +1,15 @@
 Rails.application.routes.draw do
 
+  root to: "public/homes#top"
+
   namespace :admin do
     root to: 'homes#top'
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]
+    get 'orders/show'
   end
   namespace :public do
-    root to: "homes#top"
+
     get "homes/about" => "homes#about", as: :about
     get 'customers/mypage' => 'customers#show'
     get 'customers/edit' => 'customers#edit'
@@ -19,9 +22,12 @@ Rails.application.routes.draw do
           delete "all_destroy"
         end
     end
+    resources :orders, only: [:index, :new, :create, :show]
+    post 'orders/confirm'
+    get 'orders/complete'
   end
 
-  devise_for :admins, skip: [:registrations, :passwords], controllers: {
+  devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
   }
 
