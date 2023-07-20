@@ -1,4 +1,5 @@
 <main>
+   <%= image_tag 'nagano' %>
    <p>ようこそ、ながのCAKEへ！<br>
       このサイトは、ケーキ販売のECサイトになります。</br>
       会員でない方も商品の閲覧はできますが、<br>
@@ -6,4 +7,18 @@
    </p>
 
    <h1>新着商品</h1>
+   <table>
+      <tr>
+         <% @items.each do |item| %>
+         <td>
+            <%= link_to public_item_path(item.id) do %>
+               <%= image_tag item.image, size: '200x150' %><br>
+               <%= item.name %><br>
+               ¥<%= item.price.to_s(:delimited) %>
+            <% end %>
+         </td>
+         <% end %>
+      </tr>
+   </table>
+   <%= link_to '全ての商品を見る>', public_items_path %>
 </main>

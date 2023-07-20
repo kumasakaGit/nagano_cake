@@ -5,6 +5,7 @@ class Customer < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_one_attached :image
   has_many :cart_items
+  has_many :orders
 
   enum is_deleted: { active: false, unsubscribe: true }
 end

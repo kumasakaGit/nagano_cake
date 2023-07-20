@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]
-    get 'orders/show'
+    resources :orders, only: [:show]
   end
   namespace :public do
 
@@ -22,9 +22,10 @@ Rails.application.routes.draw do
           delete "all_destroy"
         end
     end
+    get 'orders/complete'
     resources :orders, only: [:index, :new, :create, :show]
     post 'orders/confirm'
-    get 'orders/complete'
+
   end
 
   devise_for :admin, skip: [:registrations, :passwords], controllers: {

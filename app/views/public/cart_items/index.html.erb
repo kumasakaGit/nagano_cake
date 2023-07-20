@@ -17,9 +17,9 @@
     <tr>
       <th>
         <% if cart_item.item.image.attached? %>
-          <%= image_tag cart_item.item.image.variant(resize: "100*100").processed %>
+          <%= image_tag cart_item.item.image, size: "100x75" %>
         <% else %>
-          <%= image_tag 'no_image'.variant(resize: "100*100").processed %>
+          <%= image_tag 'no_image', size: "100x75" %>
         <% end %>
         <%= cart_item.item.name %>
       </th>
