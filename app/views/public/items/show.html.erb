@@ -1,14 +1,22 @@
-<%= image_tag @item.image, size: "300x225" %>
-<h4><%= @item.name %></h4>
-<p><%= @item.introduction %></p>
-<div class="d-flex">
-  <h4>¥<%= @item.with_tax_price %></h4>
-  <p>(税込)</p>
+<div class="container">
+  <div class="row mx-auto">
+    <div class="col-3 m-3">
+      <%= image_tag @item.image, size: "300x225" %>
+    </div>
+    <div class="col-7 m-5">
+      <h4><strong><%= @item.name %></strong></h4>
+      <p><%= @item.introduction %></p>
+      <div class="d-flex mt-5">
+        <h4>¥<%= @item.with_tax_price.to_s(:delimited) %></h4>
+        <p>(税込)</p>
+      </div>
+      <p>数量を選択してください。</p>
+      <%= form_with model: @cart_item, url: public_cart_items_path, local: true do |f| %>
+        <%= f.label :amount, "個数選択" %>
+        <%= f.select :amount, *[1..10] %>
+        <%= f.hidden_field :item_id, :value => @item.id %>
+        <%= f.submit "カートに入れる", class: "btn btn-success ml-5" %>
+      <% end %>
+    </div>
+  </div>
 </div>
-<p>数量を選択してください。</p>
-<%= form_with model: @cart_item, url: public_cart_items_path, local: true do |f| %>
-<%= f.label :amount, "個数選択" %>
-<%= f.select :amount, *[1..10] %>
-<%= f.hidden_field :item_id, :value => @item.id %>
-<%= f.submit "カートに入れる" %>
-<% end %>
