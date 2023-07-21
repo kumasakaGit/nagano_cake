@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     if customer_signed_in?
-      public_customers_mypage_path(resource)
+      root_path(resource)
     elsif admin_signed_in?
       admin_root_path(resource)
     end
