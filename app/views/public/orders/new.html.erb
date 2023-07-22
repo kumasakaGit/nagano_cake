@@ -1,11 +1,27 @@
-<h3>注文情報入力</h3>
-<%= form_with model: @order, url: public_orders_confirm_path, local: true do |f| %>
-
-<%= f.radio_button :payment_methods, Order.payment_methods.key(1) %>
-<%= f.label :payment_methods_credit_card, Order.payment_methods_i18n[:credit_card] %>
-
-<%= f.radio_button :payment_methods, Order.payment_methods.key(2) %>
-<%= f.label :payment_methods_transfer, Order.payment_methods_i18n[:transfer]%>
-
-<%= f.submit "確認画面へ進む", :class => "btn btn-primary" %>
-<% end %>
+<div class="container">
+  <div class="row my-4">
+    <div class="col-5 mr-auto">
+      <h3 class="bg-light text-center">注文情報入力</h3>
+      <%= form_with model: @order, url: public_orders_confirm_path, local: true do |f| %>
+        <h5><strong>支払方法</strong></h5>
+        <table class="ml-4">
+          <tr>
+            <td>
+              <%= f.radio_button :payment_methods, Order.payment_methods.key(1) %>
+              <%= f.label :payment_methods_credit_card, Order.payment_methods_i18n[:credit_card] %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <%= f.radio_button :payment_methods, Order.payment_methods.key(2) %>
+              <%= f.label :payment_methods_transfer, Order.payment_methods_i18n[:transfer]%>
+            </td>
+          </tr>
+          <tr>
+            <td><%= f.submit "確認画面へ進む", :class => "btn btn-primary" %></td>
+          </tr>
+        </table>
+      <% end %>
+    </div>
+  </div>
+</div>

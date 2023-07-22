@@ -1,4 +1,10 @@
 @use '~bootstrap/scss/bootstrap';
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .box {
   display: grid;
   grid-template-rows: auto 1fr auto;
