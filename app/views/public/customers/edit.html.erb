@@ -6,7 +6,7 @@
   </div>
   <%= form_with model: @customer, url: public_customers_path, local: true do |f| %>
   <div class="row">
-  <table>
+    <table>
       <tr>
         <td><%= f.label :"氏名" %></td>
         <td><%= f.text_field :last_name %></td>
@@ -41,6 +41,6 @@
       </tr>
     </table>
   </div>
+  <% end %>
 </div>
 
-<% end %>

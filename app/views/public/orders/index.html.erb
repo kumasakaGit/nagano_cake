@@ -3,7 +3,6 @@
     <div class="col-5 mr-auto">
       <h3 class="bg-light text-center">注文履歴一覧</h3>
     </div>
-<h3></h3>
 <table class="table" border="2" bordercolor="#000000">
   <thead>
     <tr>
@@ -19,11 +18,15 @@
     <tr>
       <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
       <td>
-        〒<%= order.postal_code %>
-        <%= order.shopping_address %>
+        〒<%= order.postal_code %><br>
+        <%= order.shopping_address %><br>
         <%= order.name %>
       </td>
-      <td><%= order.name %></td>
+      <td>
+        <% order.order_items.each do |order_item| %>
+          <%= order_item.item.name %><br>
+        <% end %>
+      </td>
       <td><%= order.billing_amount.to_s(:delimited) %></td>
       <td><%= link_to "表示する", public_order_path(order.id) %></td>
     </tr>

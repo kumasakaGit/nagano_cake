@@ -25,11 +25,15 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @orders = Order.all
+    @orders = current_customer.orders.all
   end
 
   def show
     @order = current_customer.orders.find(params[:id])
+    @total = 0
+    @order.order_items.each do |order_item|
+      @total += order_item.subtotal
+    end
   end
 
   def confirm
