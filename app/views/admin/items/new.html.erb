@@ -1,4 +1,14 @@
 <div class="container">
+  <% if @item.errors.any? %>
+    <h3>
+      <%= @item.errors.count %> 件のエラーが見つかりました
+    </h3>
+    <ul>
+      <% @item.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
   <div class="row my-5">
     <div class="col-4 mx-5">
       <h3 class="bg-light px-4 text-center">商品新規登録</h3>

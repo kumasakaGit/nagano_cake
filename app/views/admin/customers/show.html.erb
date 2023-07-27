@@ -39,7 +39,11 @@
         </tr>
         <tr>
           <td>会員ステータス</td>
+          <% if @customer.is_deleted =="active" %>
           <td class="text-success"><%= @customer.is_deleted_i18n %></td>
+          <% else %>
+          <td class="text-secondary"><%= @customer.is_deleted_i18n %></td>
+          <% end %>
         </tr>
         <tr>
           <td colspan="1"></td>

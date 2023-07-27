@@ -20,15 +20,15 @@
           <tr>
             <td><%= customer.id %></td>
             <td>
-              <%= link_to admin_customer_path(customer.id) do %>
-              <%= customer.last_name %><%= customer.first_name %>
+              <%= link_to admin_customer_path(customer.id), class: "text-dark" do %>
+              <%= customer.last_name + customer.first_name %>
               <% end %>
             </td>
             <td><%= customer.email %></td>
-            <% if customer.is_deleted = "active" %>
+            <% if customer.is_deleted == "active" %>
               <td class="text-success"><%= customer.is_deleted_i18n %></td>
             <% else %>
-              <td><%= customer.is_deleted_i18n %></td>
+              <td class="text-secondary"><%= customer.is_deleted_i18n %></td>
             <% end %>
           </tr>
           <% end %>
